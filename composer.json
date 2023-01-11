@@ -1,18 +1,18 @@
 {
-  "name": "emgag/vg-wort-message-api",
+  "name": "urbanmedia/vg-wort-message-api",
   "description": "VG Wort METIS messages API helper",
   "keywords": [
     "vg-wort",
     "tom",
     "metis"
   ],
-  "homepage": "https://github.com/emgag/vg-wort-message-api",
+  "homepage": "https://github.com/urbanmedia/vg-wort-message-api.git",
   "type": "library",
   "license": "MIT",
   "authors": [
     {
-      "name": "Dominik Dassow",
-      "email": "dd@film.tv"
+      "name": "Ferenc Fejer",
+      "email": "ferenc.fejer@tagesspiegel.de"
     }
   ],
   "require": {
