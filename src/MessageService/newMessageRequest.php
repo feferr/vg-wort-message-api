@@ -59,21 +59,19 @@ class newMessageRequest
      * @param Parties $parties
      * @param MessageText $messagetext
      * @param Webranges $webranges
+     * @param array $publisherPermissions
      * @param pixelIDType $privateidentificationid
      */
-    public function __construct($parties, $messagetext, $webranges, $reproductionRight, $distributionRight, $publicAccessRight,
-                                $otherRightsOfPublicReproduction, $rightsGrantedConfirmation, $withoutOwnParticipation, $privateidentificationid)
+    public function __construct($parties, $messagetext, $webranges, array $publisherPermissions, $privateidentificationid)
     {
       $this->parties = $parties;
       $this->messagetext = $messagetext;
       $this->webranges = $webranges;
-      $this->distributionRight = $distributionRight;
-      $this->reproductionRight = $reproductionRight;
-      $this->publicAccessRight = $publicAccessRight;
       $this->privateidentificationid = $privateidentificationid;
-      $this->otherRightsOfPublicReproduction = $otherRightsOfPublicReproduction;
-      $this->rightsGrantedConfirmation = $rightsGrantedConfirmation;
-      $this->withoutOwnParticipation = $withoutOwnParticipation;
+
+      foreach ($publisherPermissions as $key => $publisherPermission) {
+          $this->{$key} = $publisherPermission;
+      }
     }
 
     /**
