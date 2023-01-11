@@ -21,6 +21,36 @@ class newMessageRequest
     protected $webranges = null;
 
     /**
+     * @var boolean
+     */
+    protected $reproductionRight;
+
+    /**
+     * @var boolean
+     */
+    protected $distributionRight;
+
+    /**
+     * @var boolean
+     */
+    protected $publicAccessRight;
+
+    /**
+     * @var boolean
+     */
+    protected $otherRightsOfPublicReproduction;
+
+    /**
+     * @var boolean
+     */
+    protected $rightsGrantedConfirmation;
+
+    /**
+     * @var boolean
+     */
+    protected $withoutOwnParticipation;
+
+    /**
      * @var pixelIDType $privateidentificationid
      */
     protected $privateidentificationid = null;
@@ -29,14 +59,19 @@ class newMessageRequest
      * @param Parties $parties
      * @param MessageText $messagetext
      * @param Webranges $webranges
+     * @param array $publisherPermissions
      * @param pixelIDType $privateidentificationid
      */
-    public function __construct($parties, $messagetext, $webranges, $privateidentificationid)
+    public function __construct($parties, $messagetext, $webranges, array $publisherPermissions, $privateidentificationid)
     {
       $this->parties = $parties;
       $this->messagetext = $messagetext;
       $this->webranges = $webranges;
       $this->privateidentificationid = $privateidentificationid;
+
+      foreach ($publisherPermissions as $key => $publisherPermission) {
+          $this->{$key} = $publisherPermission;
+      }
     }
 
     /**
@@ -109,6 +144,86 @@ class newMessageRequest
     {
       $this->privateidentificationid = $privateidentificationid;
       return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getReproductionRight(): bool
+    {
+        return $this->reproductionRight;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getDistributionRight(): bool
+    {
+        return $this->distributionRight;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPublicAccessRight(): bool
+    {
+        return $this->publicAccessRight;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isOtherRightsOfPublicReproduction(): bool
+    {
+        return $this->otherRightsOfPublicReproduction;
+    }
+
+    /**
+     * @param bool $reproductionRight
+     */
+    public function setReproductionRight(bool $reproductionRight): void
+    {
+        $this->reproductionRight = $reproductionRight;
+    }
+
+    /**
+     * @param bool $distributionRight
+     */
+    public function setDistributionRight(bool $distributionRight): void
+    {
+        $this->distributionRight = $distributionRight;
+    }
+
+    /**
+     * @param bool $publicAccessRight
+     */
+    public function setPublicAccessRight(bool $publicAccessRight): void
+    {
+        $this->publicAccessRight = $publicAccessRight;
+    }
+
+    /**
+     * @param bool $otherRightsOfPublicReproduction
+     */
+    public function setOtherRightsOfPublicReproduction(bool $otherRightsOfPublicReproduction): void
+    {
+        $this->otherRightsOfPublicReproduction = $otherRightsOfPublicReproduction;
+    }
+
+    /**
+     * @param bool $rightsGrantedConfirmation
+     */
+    public function setRightsGrantedConfirmation(bool $rightsGrantedConfirmation): void
+    {
+        $this->rightsGrantedConfirmation = $rightsGrantedConfirmation;
+    }
+
+    /**
+     * @param bool $withoutOwnParticipation
+     */
+    public function setWithoutOwnParticipation(bool $withoutOwnParticipation): void
+    {
+        $this->withoutOwnParticipation = $withoutOwnParticipation;
     }
 
 }
